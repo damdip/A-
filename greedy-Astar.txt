@@ -1,0 +1,68 @@
+algoritmo_a*_treeSearch(problem):
+
+fringe = Fringe()  #una lista ordinata che aggiunge i nodi in base alla funzione di valutazione f
+
+node = Node( problem.getInitialState(), StateEvaluation(problem.getInitialState())
+
+fringe.add( node)
+
+
+while ( fringe.IsNotEmpty())
+	
+	currentNode = fringe.pop() #restituisce l'elemento affiorante dalla fringe,  ovvero quello con valutazione piu alta
+	
+	
+	if( currentNode.getState() == problem.getFinalState()
+		return currentNode
+
+
+	else:
+	
+		childStates = currentNode.getState().getChildStates()
+
+		for childState in childStates:
+			
+			childNode = Node( childState , StateEvaluation(childState))
+
+			childNode.setParent(currentNode)
+			
+			fringe.add(childNode)
+
+
+
+
+algoritmo_a*_graphSearch(problem):
+
+fringe = Fringe()  #una lista ordinata che aggiunge i nodi in base alla funzione di valutazione f
+
+close = []
+
+node = Node( problem.getInitialState(), StateEvaluation(problem.getInitialState())
+
+fringe.add( node)
+
+
+while ( fringe.IsNotEmpty())
+	
+	currentNode = fringe.pop() #restituisce l'elemento affiorante dalla fringe,  ovvero quello con valutazione piu alta
+	
+	close.append( currentNode.getState())
+		
+	if( currentNode.getState() == problem.getFinalState()
+		return currentNode
+	
+
+	else:
+		
+		
+		childStates = currentNode.getState().getChildStates()
+
+		for childState in childStates:
+			
+			if ( childStates not in close ):
+			
+				childNode = Node( childState , StateEvaluation(childState))
+
+				childNode.setParent(currentNode)
+			
+				fringe.add(childNode)
